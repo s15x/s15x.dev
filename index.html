@@ -4,38 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/style.css">
+    <script defer src="/src/javascript.js"></script>
     <title>s15x</title>
 </head>
 <body>
+  <nav>
     <div class="navbar">
-        <div class="logo">
-          <a class="inline-flex items-center" href="/">
-            <img
-              alt="s15x logo"
-              src="/_next/static/media/bleed.9b1bbade.png"
-              width="500"
-              height="500"
-              decoding="async"
-              data-nimg="1"
-              class="w-12 h-12 md:w-16 md:h-16"
-              style="color:transparent"
-            />
-          </a>
-        </div>
-        <div class="nav-links">
-          <a href="/commands">Commands</a>
-          <a href="/status">Status</a>
-          <a href="https://docs.bleed.bot">Docs</a>
-          <a href="/faq">FAQ</a>
-        </div>
-        <a href="/dashboard" class="dashboard-btn">Dashboard</a>
+      <div class="logo">
+        <a class="inline-flex items-center" href="/">
+          <img
+            alt="s15x logo"
+            src="/Images/discotools-xyz-icon (3).png"
+            width="500"
+            height="500"
+            decoding="async"
+            data-nimg="1"
+            class="w-12 h-12 md:w-16 md:h-16"
+            style="color:transparent"
+          />
+        </a>
       </div>
-
-      <div class="landing-holder">
-        <h1>hello</h1>
-        <span>meow</span>
-
+      
+      <!-- Mobile Menu Button -->
+      <button class="menu-button" onclick="toggleMenu()">☰</button>
+  
+      <div class="nav-links" id="navLinks">
+        <a href="/commands">Commands</a>
+        <a href="/status">Status</a>
+        <a href="https://docs.bleed.bot">Docs</a>
+        <a href="/faq">FAQ</a>
+        <!-- Dashboard button inside mobile menu (hidden on desktop) -->
+        <a href="/dashboard" class="dashboard-btn mobile-only">Dashboard</a>
       </div>
+      
+      <!-- Dashboard button (visible only on desktop) -->
+      <a href="/dashboard" class="dashboard-btn desktop-only">Dashboard</a>
+    </div>
+  </nav>
+
+  <div class="landing-holder">
+    <div class="hero-container">
+      <h1>s15x, We design and innovate <br> unique <span class="herospan">Roblox clothing experiences</span></h1>
+      <p>Our systems have enabled our clients to generate over $1,000,000. s15x supports over 1,000 experiences with fully pre-made scripts, featuring a simple setup and easy configuration—no scripting knowledge required.</p>
+      <div class="ButtonHolder">
+        <a class="Regular" href="">Learn More</a>
+        <a class="PurchaseButton" href="">Purchase Here</a>
+      </div>
+    
+    </div>
+  </div>
 
 </body>
 </html>
