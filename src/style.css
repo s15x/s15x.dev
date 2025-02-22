@@ -3,11 +3,11 @@
   box-sizing: border-box;
 }
 body {
-  overflow: hidden;
-  background: black;
+  overflow-x: hidden;
+  background: linear-gradient(to top, rgb(7, 7, 7) 0%, rgb(2, 2, 2) 100%);
   margin: 0;
   padding: 0;
-  background-color: #000;
+  background-color: linear-gradient(to top, rgb(209, 50, 50) 0%, rgb(2, 2, 2) 100%);
   font-family: Arial, sans-serif;
 }
 
@@ -38,6 +38,13 @@ body {
       height: 2px;
   }
 }
+
+hr.solid {
+  border: 2px solid #414040a8;
+  border-radius: 500px;
+  max-width: 100rem;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -193,6 +200,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   margin-top: 8rem;
+  margin-bottom: 20rem;
   height: 80%;
   text-align: start;
   padding: 30px;
@@ -378,5 +386,154 @@ animation: textShine 10s ease-in-out infinite alternate;
     align-items: center;
     align-content: center;
     gap: 5px;
+  }
+}
+
+.features-holder {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 8rem;
+  height: 80%;
+  text-align: center;
+  padding: 30px;
+}
+
+.features-holder h1 {
+  color: rgb(228, 228, 228);
+  font-size: 35px;
+
+  max-width: 40rem;
+}
+
+.texthighlight {
+  color: rgb(133, 133, 133);
+  font-size: 35px;
+  margin-bottom: 20px;
+  max-width: 40rem;
+}
+
+.features-holder p {
+  color: rgb(189, 189, 189);
+  font-size: 20px;
+ 
+  max-width: 40rem;
+}
+
+.icons {
+  max-width: 85px;
+  max-height: max-content;
+  opacity: 75%;
+}
+
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr); /* Default: Two columns */
+  align-items: flex-start;
+  align-content: space-evenly;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr; /* Change to one column */
+    gap: 15px; /* Increase spacing */
+  }
+}
+
+/* 🔹 Box with text at top, image at bottom */
+.grid-box-textTop, .grid-box-textBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: space-evenly;
+  text-align: start;
+  margin: auto;
+  position: relative; /* Required for absolute children */
+
+  background: rgba(0, 0, 0, 0.479);
+  border-radius: 35px;
+
+  -webkit-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 25px 0px rgba(0, 0, 0, 0.75);
+
+  height: auto;
+  max-width: 100%;
+  width: 90%;
+  padding: 35px;
+}
+
+.grid-box-textTop::before, .grid-box-textBottom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(to top, rgba(14, 14, 14, 0.719) 0%, rgba(35, 35, 35, 0.719) 100%);
+
+  -webkit-mask: linear-gradient(white 0 0) content-box, white;
+  mask: linear-gradient(white 0 0) content-box, white;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  
+  border-radius: 35px;
+  pointer-events: none; /* Prevents blocking interactions */
+  z-index: -1; /* Places the border effect behind content */
+}
+
+.grid-box-textBottom {
+  flex-direction: column-reverse; /* Image first, then text */
+}
+
+/* Image inside grid-box-textTop */
+.grid-box-textTop img {
+  max-width: 493px; /* Maximum width */
+  width: 100%; /* Responsive: Shrinks on small screens */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+  border-radius: 20px;
+  margin-top: 15px;
+  
+}
+
+/* Image inside grid-box-textBottom */
+.grid-box-textBottom img {
+  max-width: 493px; /* Maximum width */
+  width: 100%; /* Responsive: Shrinks on small screens */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.grid-box-textTop h1, .grid-box-textBottom h1 {
+  color: #707070;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.grid-box-textTop p, .grid-box-textBottom p {
+  color: #afaeae;
+  font-size: 15px;
+  margin-top: -2px;
+  margin-bottom: -2px;
+  max-width: 25rem;
+}
+
+.grid-box-textBottom p {
+  margin-bottom: -2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid-box-textTop, .grid-box-textBottom {
+    width: 100%;
+    padding: 20px;
   }
 }
