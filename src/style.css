@@ -222,8 +222,8 @@ hr.solid {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 60px;
-    right: 2px;
+    top: 80px;
+    right: 27px;
     width: 60%;
     background: rgba(15, 15, 15, 0.9);
     border-radius: 0.5rem;
@@ -231,6 +231,9 @@ hr.solid {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     max-height: 0px;
     overflow: hidden;
+
+    max-width: 298px;
+    max-height: 328px;
    
 
     /* Animation */
@@ -277,6 +280,7 @@ hr.solid {
     transform: scaleY(1);
     padding: 1rem;
     max-height: 400px;
+    z-index: 20;
   }
 }
 
@@ -321,7 +325,7 @@ hr.solid {
   color: rgb(189, 189, 189);
   font-size: 25px;
   margin-bottom: 20px;
-  max-width: 40rem;
+  max-width: 47rem;
   -webkit-animation: fade-in-bottom 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   animation: fade-in-bottom 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
@@ -525,7 +529,7 @@ animation: textShine 10s ease-in-out infinite alternate;
 .icons {
   max-width: 85px;
   max-height: max-content;
-  opacity: 75%;
+  z-index: 2;
 }
 
 
@@ -649,27 +653,77 @@ animation: textShine 10s ease-in-out infinite alternate;
   }
 }
 
+
+
+/* General Grid Container */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dynamic layout */
-  gap: 10px;
-  padding: 20px;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 15px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.two-wide {
+  grid-template-columns: repeat(2, 1fr); /* 3 equal columns */
 }
 
 /* General Box Styling */
 .grid-box {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #0d0d12;
+  background: linear-gradient(to top, rgba(14, 14, 14, 0.719) 0%, rgba(35, 35, 35, 0.719) 100%);
   border-radius: 2.5rem;
-  padding: 20px;
+  padding: 15px;
   width: 100%;
   height: auto;
+  text-align: start;
+  color: white;
+  z-index: 1; /* Ensure content stays on top */
+  
+
+  -webkit-box-shadow: inset 2px -2px 31px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 2px -2px 31px -7px rgba(0,0,0,0.75);
+  box-shadow: inset 2px -2px 31px -7px rgba(0,0,0,0.75);
+
+  
+  
 }
 
-/* Box 1 - Matches original working setup */
+/* Gradient Border Effect */
+.grid-box::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to top, rgba(29, 29, 29, 0.8) 0%, rgba(27, 27, 27, 0.8) 100%);
+  border-radius: 2.7rem; /* Slightly larger than the box itself */
+  z-index: -1; /* Puts it behind the box */
+}
+
+@keyframes glow-scale {
+  0% {
+    box-shadow: 0px 4px 15px rgba(112, 112, 112, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.6);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0px 4px 15px rgba(112, 112, 112, 0.3);
+    transform: scale(1);
+  }
+}
+
+.grid-box:hover {
+  animation: glow-scale 3s infinite alternate ease-in-out;
+}
+
+
+
+/* Wide Box (Full Width) */
 .box-wide {
   display: flex;
   flex-direction: row;
@@ -677,88 +731,100 @@ animation: textShine 10s ease-in-out infinite alternate;
   justify-content: space-between;
   gap: 35px;
   padding: 40px;
+
+  max-width: 1024px;
+  max-height: 450px;
+}
+
+.no-space {
+  grid-column: 1 / -1;
+}
+
+/* Tall Box */
+.box-tall {
   grid-column: span 1;
-}
-
-.box-wide .text-content {
-  text-align: left;
-  padding-left: 0;
-}
-
-.box-wide .image-container {
-  width: 100%;
-  max-width: 550px;
-}
-
-.box-wide img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-/* Box 2 - Matches original working setup */
-.box-normal {
-  display: flex;
-  flex-direction: column;
-  gap: 35px;
+  grid-row: span 2;
   padding: 35px;
+  display: grid;
+  align-content: start;
+  align-items: center;
+  grid-template-columns: repeat(1, 1fr); /* 3 equal columns */
+  gap: 15px;
+  
+  max-width: 497px;
+  max-height: auto;
+}
+
+/* Normal Boxes */
+.box-normal {
   grid-column: span 1;
   grid-row: span 1;
+  padding: 25px;
+
+  max-width: 497px;
+  max-height: 397px;
 }
 
-/* Box 3 - New (Tall Layout, structured like Box 1) */
-.box-tall {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 35px;
-  padding: 40px;
-  grid-column: span 1;
-  grid-row: span 2; /* Taller layout */
+/* Stacked Box (Takes 2 Rows) */
+.box-stacked {
+  grid-row: span 1; /* Makes it taller so another box can fit below */
 }
 
-.box-tall .text-content {
-  text-align: left;
-  padding-left: 0;
+.image-container {
+  position: relative; /* Needed for absolute positioning inside */
+  overflow: hidden; /* Prevents overflow issues */
 }
 
-.box-tall .image-container {
-  width: 100%;
-  max-width: 100%;
-}
-
-.box-tall img {
+/* Image Styling */
+.image-container img {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 2.5rem;
+  border-radius: 2rem;
+  z-index: -1;
+  
 }
 
-/* No-Space Modifier (Expands to Full Width) */
-.no-space {
-  grid-column: 1 / -1 !important; /* Full width */
+.img-down {
+  position: relative;
+  bottom: 20px;
 }
 
+.text-content {
+  position: relative;
+
+}
+
+.title {
+  font-weight: bold;
+}
+
+.text-content p {
+  font-size: 17px;
+}
+
+.image-container2 img {
+  width: 100%;
+  height: 500px; /* Set a fixed height */
+  object-fit: contain;
+  border-radius: 2rem;
+}
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .grid-container {
-    grid-template-columns: 1fr; /* Stack on mobile */
+      grid-template-columns: 1fr;
   }
 
   .grid-box {
-    grid-column: span 1;
-  }
-
-  .box-tall {
-    grid-row: span 1; /* Normal stacking on mobile */
+      grid-column: span 1;
   }
 
   .box-wide {
-    flex-direction: column;
+      flex-direction: column;
+  }
+
+  .image-container2 img {
+    height: auto;
+    
   }
 }
-
-
-
-
-
